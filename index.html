@@ -3,8 +3,65 @@
 <head>
 	<meta charset="UTF-8">
 	<title>我的网站</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<style>
+		*{margin: 0;padding: 0;}
+		html,body{height: 100%;width: 100%;font-family: 'Microsoft YaHei', sans-serif;}
+		a{text-decoration: none;font-size: 0.9rem;font-size: 18px;}
+		ul{margin: 0;padding: 0}
+		li{list-style: none;}
+		h2{font-size: 48px;margin-bottom: 10px;}
+		p{font-size: 20px;margin-bottom: 5px;}
+		h3{font-size: 24px;}
+		.container{height: 100%}
+		.left{height: 100%;width: 70%;float: left;text-align: right;}
+		a{color: inherit;}
+		.right{height: 100%;width: 30%;float: left;text-align: left;}
+		.panel{transition: 1s;}
+		.panel,.left:hover+.right{background-color: #22c3aa;color: #fff;}
+		.right,.panel:hover{background-color: #fff;color: #22c3aa;}
+		.right:hover + img{transform: rotateY(180deg);}
+		.left:hover
+		.clearfix:after{content: "";display: block;height: 0;clear: both;}
+		.panel:hover a{color: #22c3aa}
+		.clearfix{*zoom:1;}
+		.pd{padding: 10px;}
+		.panel:hover a:hover{color: #d0648a;}
+		.description{margin-bottom: 40px;}
+		img{position: absolute;left: 70%;bottom: 20px;margin-left: -100px;border-radius: 100px;transition: 1s;}
+	</style>
 </head>
 <body>
-	<h1>this is my github website</h1>
+	<div class="container clearfix">
+		<div class="panel left">
+			<div class="pd">
+			<div class="description">
+				<h2>我是谁</h2>
+				<p>软件工程烟酒生</p>
+				<h3>前端工程师学习中</h3>
+			</div>
+			<ul class="links">
+				<li><a href="#">简历</a></li>
+				<li><a href="#">代码</a></li>
+				<li><a href="#">邮件</a></li>
+			</ul>
+			</div>
+		</div>
+		<div class="panel right">
+			<div class="pd">
+			<div class="description">
+				<h2>Who am I?</h2>
+				<p>SE postgraduate</p>
+				<h3>On the way to be a FE Engineer</h3>
+			</div>
+			<ul class="links">
+				<li><a href="#">CV</a></li>
+				<li><a href="#">Github</a></li>
+				<li><a href="#">Email</a></li>
+			</ul>
+			</div>
+		</div>
+		<img src="img/avatar.png" alt="">
+	</div>
 </body>
 </html>
