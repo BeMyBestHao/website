@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>平时做的小东西</title>
+		<link rel="icon" href="../img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+		<style>
+			html,body{height: 100%;width: 100%;font-family: 'Microsoft YaHei', sans-serif;}
+			body{background-color: #22c3aa;}
+			ul{margin: 0;padding: 0}
+			li{list-style: none;}
+			a{text-decoration: none;color: white;font-size: 24px;}
+			li{height: 30px;margin: 10px 0}
+			h2{color: #393;font-size: 36px;margin-bottom: 30px;}
+			a:hover{color: #d0648a}
+			.container{width: 50%;margin: 0 auto;padding: 10% 0}
+		</style>
+</head>
+<body>
+	<div class="container">
+		<h2>个人的一点拙作</h2>
+		<ul>
+			<li><a href="flappybird.html" target='_blank'>flappybird——轻松拿到100分</a></li>
+			<li><a href="snake.html" target='_blank'>贪吃蛇——我保证这是你见过的最丑的贪吃蛇</a></li>
+			<li><a href="tags.html" target='_blank'>标签云——向猎巫大神致敬</a></li>
+			<li><a href="robot.html" target='_blank'>机器人——会自动绕开障碍物(⊙o⊙)哦</a></li>
+		</ul>
+	</div>
+	<script>
+        var ch = document.documentElement.clientHeight;
+        var cw = document.documentElement.clientWidth;
+        window.onload = function(){
+            setInterval(createSnow,300);
+        }
+        function createSnow(){
+            var div = document.createElement("div");
+            var r = Math.floor(Math.random()*20+5);
+            var l = Math.floor(Math.random()*cw);
+            div.style.width = r+'px';
+            div.style.height = r+'px';
+            div.style.left = l +'px';
+            div.style.top = 0;
+            div.style["border-radius"] = r+'px';
+            div.style.position = 'absolute';
+            div.style.background = getRandomColor();
+            document.body.appendChild(div);
+            var speed1 = Math.floor(Math.random()*5+1);
+            var speed2 = Math.floor(Math.random()*5+1);
+            var timer = setInterval(function(){
+                if(div.offsetLeft<(cw-2*r) && div.offsetTop<(ch-2*r)){
+                    div.style.left = div.offsetLeft+speed1+'px';
+                    div.style.top = div.offsetTop+speed2+'px';
+                }else if(div.offsetLeft>=(cw-2*r)){
+                    div.style.display="none";
+                }else if(div.offsetTop>=(ch-2*r)){
+                    div.style.display="none";
+                    clearInterval(timer);
+                }
+
+            },100)
+        }
+        function getRandomColor(){
+             return '#'+Math.floor(Math.random(0,0xffffff)*0xffffff).toString(16);
+        }
+	</script>
+</body>
+</html>
