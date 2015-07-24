@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 	<title>平时做的小东西</title>
 		<link rel="icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="../css/robotcat.css">
 		<style>
 			html,body{height: 100%;width: 100%;font-family: 'Microsoft YaHei', sans-serif;}
 			body{background-color: #22c3aa;}
@@ -15,6 +16,7 @@
 			h2{color: #393;font-size: 36px;margin-bottom: 30px;}
 			a:hover{color: #d0648a}
 			.container{width: 50%;margin: 0 auto;padding: 10% 0}
+            .msg{position: absolute;top: 60px;right: 50px;color: #fff;font-size: 16px;}
 		</style>
 </head>
 <body>
@@ -27,8 +29,101 @@
 			<li><a href="robot.html" target='_blank'>机器人——会自动绕开障碍物(⊙o⊙)哦</a></li>
 		</ul>
 	</div>
+    <div class='robotcat' id="robotcat">
+        <div class="head">
+            <div class="face">
+                <div class="left-eye eye">
+                    <div class="left-eyeball eyeball"></div>
+                </div>
+                <div class="right-eye eye">
+                    <div class="right-eyeball eyeball"></div>
+                </div>
+                <div class="nose">
+                </div>
+                <div class="beard left-beard">
+                    <div class="left-top"></div>
+                    <div class="left-mid"></div>
+                    <div class="left-bottom"></div>
+                </div>
+                <div class="beard right-beard">
+                    <div class="right-top"></div>
+                    <div class="right-mid"></div>
+                    <div class="right-bottom"></div>
+                </div>
+                <div class="mid"></div>
+                <div class="mouse">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="tie">
+            <div class="ring">
+                <div class="first-line"></div>
+                <div class="second-line"></div>
+                <div class="dot"></div>
+                <div class="vertical-line"></div>
+            </div>
+        </div>
+        <div class="trunk">
+            <div class="front"></div>
+            <div class="pocket"></div>
+            <div class="horizontal-line"></div>
+            <div class="shield"></div>
+            <div class="bottom"></div>
+            <div class="foot left-foot"></div>
+            <div class="foot right-foot"></div>
+            <div class="arm left-arm" id="leftarm">
+                <div class="hand left-hand"></div>
+            </div>
+            <div class="arm right-arm" id="rightarm">
+                <div class="hand right-hand"></div>
+            </div>
+        </div>
+    </div>
+    <div class="msg">CSS画的机器猫，鼠标放在上面有惊喜</div>
 	<script>
-        var ch = document.documentElement.clientHeight;
+        var animationEvent = function(){
+           var t;
+           var el = document.createElement('fakeelement');
+           var animations = {
+             
+             'animation':'animationend',
+             'OAnimation':'oAnimationEnd',
+             'MozAnimation':'animationend',
+             'WebkitTransition':'webkitAnimationEnd'
+             
+           }
+           for(t in animations){
+               if( el.style[t] !== undefined ){
+                   return animations[t];
+               }
+           }
+       }();
+        window.onload = function(){
+            var robotcat = document.getElementById('robotcat');
+            var leftarm = document.getElementById('leftarm');
+            var rightarm = document.getElementById('rightarm');
+            robotcat.onmouseover = function(e){
+                leftarm.classList.add('left-hand-wave');
+                rightarm.classList.add('right-hand-wave');
+
+            }
+            robotcat.addEventListener(animationEvent, function(){
+                    leftarm.style["-webkit-transform"] = 'rotate(-16deg)';
+                    leftarm.style["transform"] = 'rotate(-16deg)';
+                    leftarm.style["-ms-transform"] = 'rotate(-16deg)';
+                    leftarm.style["-moz-transform"] = 'rotate(-16deg)';
+                    leftarm.style["-o-transform"] = 'rotate(-16deg)';
+                    rightarm.style["-webkit-transform"] = 'rotate(16deg)';
+                    rightarm.style["transform"] = 'rotate(16deg)';
+                    rightarm.style["-moz-transform"] = 'rotate(16deg)';
+                    rightarm.style["-ms-transform"] = 'rotate(16deg)';
+                    rightarm.style["-o-transform"] = 'rotate(16deg)';
+                    leftarm.classList.remove('left-hand-wave');
+                    rightarm.classList.remove('right-hand-wave');
+                });
+        }
+        /*var ch = document.documentElement.clientHeight;
         var cw = document.documentElement.clientWidth;
         window.onload = function(){
             setInterval(createSnow,300);
@@ -62,7 +157,7 @@
         }
         function getRandomColor(){
              return '#'+Math.floor(Math.random(0,0xffffff)*0xffffff).toString(16);
-        }
+        }*/
 	</script>
 </body>
 </html>
